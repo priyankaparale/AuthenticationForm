@@ -1,24 +1,60 @@
 //access granted
 //access denied
-let userEmail, userPassword
+//only one user suppport make it multiple user support
+const USERS_DB = [];
 
 const signUP = () => {
-    userEmail = document.getElementById('email').value
-    userPassword = document.getElementById('password').value
-
+    let firstName = document.getElementById('firstName').value
+    let lastName = document.getElementById('last-Name').value
+    let email = document.getElementById('email').value
+    let phonenumber = document.getElementById('phone-number').value
+    let password = document.getElementById('password').value
+    
     document.getElementById('sign-up-form').reset()
-    alert('Sign up successful!')
+
+    let userdetails = {
+        firstName,
+        lastName,
+        email,
+        phonenumber,
+        password
+    };
+
+    USERS_DB.push(userdetails)
+
+    // alert('Sign up successful!')
+    console.log(USERS_DB)
+    console.log('Sign up successful!')
 }
 
 const signIn = () => {
     let enteredEmail = document.getElementById('login-email').value
     let enteredPassword = document.getElementById('login-password').value
 
-    if(enteredEmail === userEmail && enteredPassword === userEmail){
-        alert('Access granted')
+
+    // wheather that users email exots
+    // wheather password matches
+    // not use filter method we use find method which returns true or false is that element exits in an array (if empty =truthy if undefined = falsy)
+    // arrao function function one liner code, index is not used so ) this is not required
+    let requireUser = USERS_DB.find(function(user,email) {
+        return user.email === enteredEmail && user.password === enteredPassword
+    })
+
+    //one line code
+    // let requiredDetails = USERS_DB.find(user => user.email === enteredEmail && user.password === enteredPassword
+    // )
+
+    if(requireUser){
+        console.log('Access granted')
     }else{
-        alert('Access denied')
+        console.log('Access denied')
     }
+
+    // if(enteredEmail === email && enteredPassword === password){
+    //     alert('Access granted')
+    // }else{
+    //     alert('Access denied')
+    // }
 }
 
 const goToHome = () => {
@@ -39,3 +75,5 @@ const goToSignIn = () => {
     document.getElementById('sign-up').style.display = 'none';
 }
 
+//save all details - fetch all value ... used object userdetails (save all user details)
+//multiple support - array of obj USERS_DB (store obj in array)
