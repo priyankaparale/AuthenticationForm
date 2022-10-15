@@ -1,16 +1,16 @@
 //access granted
 //access denied
+let userEmail, userPassword
 
-let userEmail, userPassord
-
-const signUP () => {
+const signUP = () => {
     userEmail = document.getElementById('email').value
     userPassword = document.getElementById('password').value
 
-    document.getElementById('')
+    document.getElementById('sign-up-form').reset()
+    alert('Sign up successful!')
 }
 
-const signIn () => {
+const signIn = () => {
     let enteredEmail = document.getElementById('login-email').value
     let enteredPassword = document.getElementById('login-password').value
 
@@ -20,8 +20,6 @@ const signIn () => {
         alert('Access denied')
     }
 }
-
-
 
 const goToHome = () => {
     document.getElementById('home').style.display = 'block';
@@ -41,5 +39,3 @@ const goToSignIn = () => {
     document.getElementById('sign-up').style.display = 'none';
 }
 
-//access granted
-//access denied
