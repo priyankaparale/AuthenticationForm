@@ -23,7 +23,7 @@ const signIn () => {
 
 
 
-const goToHoe = () => {
+const goToHome = () => {
     document.getElementById('home').style.display = 'block';
     document.getElementById('sign-in').style.display = 'none';
     document.getElementById('sign-up').style.display = 'none';
