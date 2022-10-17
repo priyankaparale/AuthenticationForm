@@ -1,7 +1,17 @@
 //access granted
 //access denied
 //only one user suppport make it multiple user support
+//encryption and decryption to user data
+//sign up then does not show in navigation -Hi, Priyanka  signout 
+//sign out then nav bar - signin and sign out
 const USERS_DB = [];
+
+//give anchor tag of signup id=btn1
+// const btn = document.getElementById('btn1')
+// btn.addEventListener('click', function handleClick(){
+//     btn.textContent = 'Hi, Priyanka'
+// })
+
 
 const signUP = () => {
     let firstName = document.getElementById('firstName').value
@@ -25,6 +35,8 @@ const signUP = () => {
     // alert('Sign up successful!')
     console.log(USERS_DB)
     console.log('Sign up successful!')
+
+    changeNavLinks(userdetails)
 }
 
 const signIn = () => {
@@ -77,3 +89,24 @@ const goToSignIn = () => {
 
 //save all details - fetch all value ... used object userdetails (save all user details)
 //multiple support - array of obj USERS_DB (store obj in array)
+
+const changeNavLinks = (currentUser) =>{
+    //destructuring ES6 concept
+    let{firstName, lastName} = currentUser
+
+    document.getElementById('sign-up-nav-link').style.display = 'none'
+    document.getElementById('sign-in-nav-link').style.display = 'none'
+    document.getElementById('profile-nav-link').style.display = 'block'
+    document.getElementById('sign-out-nav-link').style.display = 'block'
+
+    document.getElementById('profile-nav-link').innerText = 'Hi, ${firstName} ${lastName}'
+}
+
+const signOut = () =>{
+    document.getElementById('profile-nav-link').innerText = 'none'
+
+    document.getElementById('sign-up-nav-link').style.display = 'block'
+    document.getElementById('sign-in-nav-link').style.display = 'block'
+    document.getElementById('profile-nav-link').style.display = 'none'
+    document.getElementById('sign-out-nav-link').style.display = 'none'
+}
