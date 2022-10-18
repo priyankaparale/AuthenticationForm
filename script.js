@@ -1,16 +1,40 @@
 //access granted
 //access denied
 //only one user suppport make it multiple user support
-//encryption and decryption to user data
-//sign up then does not show in navigation -Hi, Priyanka  signout 
-//sign out then nav bar - signin and sign out
-const USERS_DB = [];
+//changing navbar = sign up then does not show in navigation -Hi, Priyanka  signout vice-versa sign out then nav bar then- signin and sign out
+//encryption(abc converted into some/any value) =(object[key] )and decryption to user data (password should not be seen to anyone)
 
 //give anchor tag of signup id=btn1
 // const btn = document.getElementById('btn1')
 // btn.addEventListener('click', function handleClick(){
 //     btn.textContent = 'Hi, Priyanka'
 // })
+
+const USERS_DB = [];
+
+const encryptionRule = {
+
+}
+
+const encrypt = (inputString) => {
+    let encryptedString = ''
+    for(let char of inputString){
+        encryptedString = encryptedString + encryptionRule[char]
+    }
+    return encryptedString
+}
+
+const decrypt = (decryptedString) => {
+    let originalString = ''
+
+    let keys = Object.keys(encryptionRule)
+    let values = Object.values(encryptionRule)
+    for(let char of inputString){
+        let requiredIndex = values.indexOf(char)
+        decryptedString = decryptedString + keys[requiredIndex]
+    }
+    return originalString
+}
 
 
 const signUP = () => {
@@ -20,6 +44,8 @@ const signUP = () => {
     let phonenumber = document.getElementById('phone-number').value
     let password = document.getElementById('password').value
     
+    let encryptedPassword = encrypt(password)
+
     document.getElementById('sign-up-form').reset()
 
     let userdetails = {
@@ -27,7 +53,7 @@ const signUP = () => {
         lastName,
         email,
         phonenumber,
-        password
+        password: encryptedPassword,
     };
 
     USERS_DB.push(userdetails)
