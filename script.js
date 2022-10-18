@@ -37,7 +37,7 @@ const decrypt = (decryptedString) => {
 }
 
 
-const signUP = () => {
+const signUp = () => {
     let firstName = document.getElementById('firstName').value
     let lastName = document.getElementById('last-Name').value
     let email = document.getElementById('email').value
